@@ -1,13 +1,18 @@
 def call() {
-
-inializeParams(config.codepath)
-terrafromInit()
+checkoutCode()
+inializeParams()
+terrafromInit(config.codepath)
 terraformValidate(config.codepath)
 terraformPlan(config.codepath)
 terraformAction(config.codepath)
  
 slackNotification("${config.slack_channel}")
 }
+
+def checkoutCode() {
+    stage("Checking out code repository") {
+        checkout scm
+    }
 
 
 def inializeParams() {
