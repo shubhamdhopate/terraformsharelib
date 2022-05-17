@@ -1,6 +1,6 @@
-def call() {
+def call(Configuration) {
 checkoutCode()
-inializeParams()
+inializeParams(Configuration)
 terrafromInit(config.codepath)
 terraformValidate(config.codepath)
 terraformPlan(config.codepath)
@@ -15,11 +15,11 @@ def checkoutCode() {
     }
 }
 
-def inializeParams() {
+def inializeParams(Configuration) {
  
         stage("Initializing The Project Parameters and Properties") {
         
-            config = readProperties file: 'Configuration'
+         config = readProperties file: "${Configuration}"
             echo "**************** Contents of Configuration ****************"
             echo "${config}"
        
