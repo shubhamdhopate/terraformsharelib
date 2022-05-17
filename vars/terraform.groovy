@@ -31,22 +31,22 @@ def inializeParams() {
  def terrafromInit(codePath){
       stage("terraform init") 
        { 
-          dir("${codePath}") {
+        dir ("${WORKSPACE}"/"${codePath}") {
        
-            sh 'terraform init init'
+            sh 'terraform init'
        }
  }
  }
 def terraformValidate(codePath){
       stage("terraform validate") 
-      {        dir("${codePath}") {
+      {        dir("${WORKSPACE}"/"${codePath}") {
             sh 'terraform  validate'
       }
  }
  }
 def terraformPlan(codePath){
         stage("terraform plan") 
-      {   dir("${codePath}") {
+      {   dir("${WORKSPACE}"/"${codePath}") {
           sh 'terraform  plan '
          
           }
@@ -58,7 +58,7 @@ def terraformPlan(codePath){
   
 def terraformAction(codePath){
           stage("terraform apply") 
-        {    dir("${codePath}") {
+        {    dir("${WORKSPACE}"/"${codePath}") {
           
                    sh 'terraform apply  -auto-approve'
                 }
