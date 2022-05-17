@@ -18,7 +18,7 @@ def checkoutCode() {
 def inializeParams() {
  
         stage("Initializing The Project Parameters and Properties") {
-            checkout scm
+        
             config = readProperties file: 'Configuration'
             echo "**************** Contents of Configuration ****************"
             echo "${config}"
