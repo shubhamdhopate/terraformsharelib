@@ -1,10 +1,10 @@
 def call(Configuration) {
 checkoutCode()
 inializeParams(Configuration)
-terrafromInit(config.codepath)
-terraformValidate(config.codepath)
-terraformPlan(config.codepath)
-terraformAction(config.codepath)
+terrafromInit("${config.codepath}")
+terraformValidate("${config.codepath}")
+terraformPlan("${config.codepath}")
+terraformAction("${config.codepath}")
  
 slackNotification("${config.slack_channel}")
 }
